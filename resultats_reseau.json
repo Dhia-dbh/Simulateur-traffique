@@ -1,0 +1,36 @@
+{
+  "routes": [
+    {
+      "nom": "A1",
+      "longueur": 1000,
+      "limite_vitesse": 90
+    },
+    {
+      "nom": "B2",
+      "longueur": 500,
+      "limite_vitesse": 70
+    },
+    {
+      "nom": "C3",
+      "longueur": 800,
+      "limite_vitesse": 50
+    }
+  ],
+  "vehicules": [
+    {
+      "id": "V1",
+      "vitesse": 80,
+      "position": 0
+    },
+    {
+      "id": "V2",
+      "vitesse": 60,
+      "position": 0
+    },
+    {
+      "id": "V3",
+      "vitesse": 40,
+      "position": 0
+    }
+  ]
+}
