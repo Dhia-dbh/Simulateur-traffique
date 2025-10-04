@@ -19,14 +19,18 @@ class Affichage:
             
     def creer_graphique(self):
         try:
+            import matplotlib.figure
+            import matplotlib.axes
             import matplotlib.pyplot as plt
             
             vitesses = [v.vitesse for v in self.reseau.vehicules]
-            plt.figure(figsize=(8, 6))
-            plt.hist(vitesses, bins=10, edgecolor='black')
-            plt.title('Distribution des Vitesses')
-            plt.xlabel('Vitesse (km/h)')
-            plt.ylabel('Nombre de Véhicules')
+            fig: matplotlib.figure.Figure
+            ax: matplotlib.axes.Axes
+            fig, ax = plt.subplots()
+            ax.hist(vitesses, bins=10, edgecolor='black')
+            ax.set_title('Stats Vitesses')
+            ax.set_xlabel('Vitesse (km/h)')
+            ax.set_ylabel('Nb Véhicules')
             plt.show()
             
         except ImportError:
