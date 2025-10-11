@@ -16,3 +16,4 @@ Python générée automatiquement depuis le code source.
    :caption: Contents:
 
    source/modules
+   CHANGELOG

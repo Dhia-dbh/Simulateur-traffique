@@ -24,6 +24,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
+    'myst_parser',  # Enable Markdown support for CHANGELOG.md
 ]
 
 autosummary_generate = True
@@ -33,8 +34,19 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'venv']
 
 language = 'fr'
 
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
+
+autodoc_type_aliases = {
+    'Route': 'models.route.route.Route',
+    'Vehicule': 'models.vehicule.vehicule.Vehicule',
+}
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+
