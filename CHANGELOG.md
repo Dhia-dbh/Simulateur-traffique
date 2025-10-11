@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
-## [0.2.0]
+## [0.2.0] - 2025-10-10
 
 ### Added
 
@@ -15,7 +15,7 @@ The format is based on Keep a Changelog and this project follows Semantic Versio
 
 - Documentation structure for changelog inclusion.
 
-## [0.1.0] - 2025-10-10
+## [0.1.0] - 2025-10-3
 
 ### Added
 
