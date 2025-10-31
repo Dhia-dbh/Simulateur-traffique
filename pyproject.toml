@@ -1,14 +1,19 @@
 [tool.poetry]
 name = "simulateur-trafic"
+packages = [
+   { include = "core" },
+   { include = "models" },
+   { include = "interface" },
+]
 version = "0.1.0"
 description = "Similateur de Traffic de Voitures"
-authors = ["Dhia Ben Hamouda"]w
+authors = ["Dhia Ben Hamouda"]
 readme = "README.md"
 license = "MIT"
 keywords = ["traffic", "simulation"]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<4.0"
+python = ">=3.10,<3.14"
 
 aiohappyeyeballs = "2.6.1"
 aiohttp = "3.12.15"
@@ -128,6 +133,7 @@ urllib3 = "2.5.0"
 wcwidth = "0.2.13"
 wfdb = "4.3.0"
 yarl = "1.20.1"
+pytest = "^8.4.2"
 
 [tool.poetry.dev-dependencies]
 Sphinx = "8.1.3"
@@ -140,8 +146,6 @@ sphinxcontrib-qthelp = "2.0.0"
 sphinxcontrib-serializinghtml = "2.0.0"
 ipykernel = "6.30.1"
 ipython = "8.37.0"
-# Add test runner if you use it
-pytest = "^7.0"
 
 [tool.poetry.extras]
 # Optional extras for GPU support; users should install these manually on compatible systems.
