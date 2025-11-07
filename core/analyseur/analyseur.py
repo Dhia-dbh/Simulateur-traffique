@@ -4,6 +4,10 @@ from __future__ import annotations
 
 from typing import List, Sequence
 
+from core.exceptions import (
+    DivisionByZeroAnalysisError,
+    MissingDataError,
+)
 from models.route import Route
 from models.vehicule import Vehicule
 
@@ -19,7 +23,9 @@ class Analyseur:
         """Calcule la vitesse moyenne actuelle de l'ensemble des véhicules."""
         vehicules: Sequence[Vehicule] = self.reseau.vehicules
         if not vehicules:
-            return 0.0
+            raise MissingDataError(
+                "Impossible de calculer une vitesse moyenne sans véhicules."
+            )
         total_vitesse = sum(vehicule.vitesse for vehicule in vehicules)
         return total_vitesse / len(vehicules)
 
@@ -34,5 +40,7 @@ class Analyseur:
     def calculer_temps_parcours(self, route: Route) -> float:
         """Estime le temps de parcours d'une route en supposant la vitesse limite."""
         if route.limite_vitesse == 0:
-            return 0.0
+            raise DivisionByZeroAnalysisError(
+                f"La route {route.nom} possède une limite de vitesse nulle."
+            )
         return route.longueur / route.limite_vitesse

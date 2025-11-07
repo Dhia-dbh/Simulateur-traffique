@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
+from core.exceptions import RouteNotFoundError, VehicleAlreadyPresentError
+
 
 class ReseauRoutier:
     """Représente le réseau routier composé de routes, intersections et véhicules."""
@@ -24,6 +26,16 @@ class ReseauRoutier:
 
     def ajouter_vehicule(self, vehicule: "Vehicule") -> None:
         """Référence un véhicule dans le réseau et la route associée."""
+        if vehicule in self.vehicules:
+            raise VehicleAlreadyPresentError(
+                f"Le véhicule {vehicule.identifiant} est déjà enregistré dans le réseau."
+            )
+        route = vehicule.route_actuelle
+        if route is None or route not in self.routes:
+            raise RouteNotFoundError(
+                "Impossible d'ajouter un véhicule sur une route inexistante dans le réseau."
+            )
+        route.ajouter_vehicule(vehicule)
         self.vehicules.append(vehicule)
 
     def mettre_a_jour_reseau(self) -> None:
