@@ -44,10 +44,10 @@ jobs:
             libffi-dev
 
       - name: Install project + test deps
-        run: poetry install --no-interaction --no-ansi --only-root --with test
+        run: poetry install
 
       - name: Run tests
-        run: poetry run pytest --cov=. --cov-report=term-missing
+        run: poetry run pytest
 
   build:
     name: Build distributions
