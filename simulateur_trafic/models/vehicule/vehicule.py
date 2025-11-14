@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from core.exceptions import InvalidVehicleStateError
+from ...core.exceptions import InvalidVehicleStateError
 
 
 class Vehicule:
@@ -88,6 +88,10 @@ class Vehicule:
 
     def changer_de_route(self, nouvelle_route: "Route") -> None:
         """Positionne le véhicule sur une nouvelle route et réinitialise la position."""
+        if nouvelle_route is None:
+            raise InvalidVehicleStateError(
+                f"Le véhicule {self.identifiant} doit être associé à une route valide."
+            )
         self.route_actuelle = nouvelle_route
         self._valider_route()
         self.position = 0

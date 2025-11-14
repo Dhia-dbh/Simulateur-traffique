@@ -5,14 +5,12 @@ from __future__ import annotations
 import argparse
 import cProfile
 import pstats
-import sys
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+import simulateur_trafic as st_pkg
+from simulateur_trafic.core import ConfigurationError, Simulateur, SimulationError
 
-from core import ConfigurationError, Simulateur, SimulationError
+DEFAULT_CONFIG = Path(st_pkg.__file__).resolve().parent / "data" / "config_reseau.json"
 
 
 def parser_arguments() -> argparse.Namespace:
@@ -23,7 +21,7 @@ def parser_arguments() -> argparse.Namespace:
     parser.add_argument(
         "-c",
         "--config",
-        default="data/config_reseau.json",
+        default=str(DEFAULT_CONFIG),
         help="Chemin vers le fichier de configuration JSON.",
     )
     parser.add_argument(

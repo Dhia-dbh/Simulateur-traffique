@@ -2,13 +2,19 @@
 
 from __future__ import annotations
 
-from core import Analyseur, Simulateur
-from interface import Affichage, Export
+from pathlib import Path
+
+import simulateur_trafic as st_pkg
+from simulateur_trafic import Analyseur, Simulateur
+from simulateur_trafic.interface import Affichage, Export
+
+
+DEFAULT_CONFIG = Path(st_pkg.__file__).resolve().parent / "data" / "config_reseau.json"
 
 
 def run() -> None:
     """Initialise les composants et exécute le scénario de simulation par défaut."""
-    simulateur = Simulateur(fichier_config="data/config_reseau.json")
+    simulateur = Simulateur(fichier_config=str(DEFAULT_CONFIG))
 
     affichage = Affichage(simulateur.reseau)
     export = Export(simulateur.reseau)

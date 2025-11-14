@@ -15,8 +15,9 @@ EtatFeu = Literal["rouge", "vert", "orange"]
 
 
 class FeuRouge:
+    """Représente un feu tricolore cyclique."""
+
     def __init__(self, cycle: int = 5):
-        # initialiser le cycle et l'état du feu
         if cycle <= 0:
             raise ValueError("Le cycle du feu doit être strictement positif.")
         self.cycle = int(cycle)
@@ -25,7 +26,7 @@ class FeuRouge:
 
     @property
     def etat(self) -> EtatFeu:
-        # retourner l'état actuel ('rouge', 'vert', 'orange')
+        """Retourne l'état actuel du feu."""
         return ("rouge", "vert", "orange")[self._etat_index]
 
     def _avancer_etat(self) -> None:
@@ -33,14 +34,13 @@ class FeuRouge:
         self._compteur = 0
 
     def avancer_temps(self, dt: float) -> None:
-        # faire avancer le temps et changer l'état si nécessaire
+        """Fait évoluer le feu en fonction du temps écoulé."""
         if dt <= 0:
             return
         restant = dt
         while restant > 0:
             temps_restant_etat = self.cycle - self._compteur
             if restant >= temps_restant_etat:
-                # on termine l'état courant et on passe au suivant
                 self._compteur += temps_restant_etat
                 self._avancer_etat()
                 restant -= temps_restant_etat

@@ -10,18 +10,23 @@ from __future__ import annotations
 import argparse
 import statistics
 import time
+from pathlib import Path
 from typing import Iterable, Optional
 
-from core import (
+from .core import (
     Analyseur,
     ConfigurationError,
     MissingDataError,
     Simulateur,
     SimulationError,
 )
-from core.optimisation import calculer_moyenne_vitesse_acceleree
-from core.optimisation.cython_ext import update_positions
-from interface import Affichage, Export
+from .core.optimisation import calculer_moyenne_vitesse_acceleree
+from .core.optimisation.cython_ext import update_positions
+from .interface import Affichage, Export
+
+
+PACKAGE_ROOT = Path(__file__).resolve().parent
+DEFAULT_CONFIG = PACKAGE_ROOT / "data" / "config_reseau.json"
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -29,7 +34,7 @@ def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Simulateur de trafic routier.")
     parser.add_argument(
         "--config",
-        default="data/config_reseau.json",
+        default=str(DEFAULT_CONFIG),
         help="Fichier de configuration JSON à charger.",
     )
     parser.add_argument(

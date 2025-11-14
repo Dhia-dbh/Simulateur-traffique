@@ -40,8 +40,8 @@ source_suffix = {
 }
 
 autodoc_type_aliases = {
-    'Route': 'models.route.route.Route',
-    'Vehicule': 'models.vehicule.vehicule.Vehicule',
+    'Route': 'simulateur_trafic.models.route.route.Route',
+    'Vehicule': 'simulateur_trafic.models.vehicule.vehicule.Vehicule',
 }
 
 # -- Options for HTML output -------------------------------------------------
@@ -49,4 +49,3 @@ autodoc_type_aliases = {
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
-

@@ -1,18 +1,4 @@
-import sys
-from pathlib import Path
-
-# Prioritiser les modules du dépôt sur ceux installés
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from importlib.machinery import SourceFileLoader
-
-# Charger FeuRouge directement depuis le fichier source pour éviter
-# les conflits avec un éventuel package installé nommé "models".
-_feu_mod = SourceFileLoader(
-    "_feu_rouge",
-    str(Path(__file__).resolve().parents[1] / "models/route/feu_rouge.py"),
-).load_module()
-FeuRouge = _feu_mod.FeuRouge
+from simulateur_trafic.models.route import FeuRouge
 
 
 def test_cycle_du_feu():

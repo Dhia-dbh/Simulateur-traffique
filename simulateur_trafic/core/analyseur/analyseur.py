@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing import List, Sequence
 
-from core.exceptions import DivisionByZeroAnalysisError, MissingDataError
-from core.optimisation import calculer_moyenne_vitesse_acceleree
-from models.route import Route
-from models.vehicule import Vehicule
+from ..exceptions import DivisionByZeroAnalysisError, MissingDataError
+from ..optimisation import calculer_moyenne_vitesse_acceleree
+from ...models.route import Route
+from ...models.vehicule import Vehicule
 
 
 class Analyseur:

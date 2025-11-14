@@ -1,11 +1,7 @@
-import sys
-from pathlib import Path
-
 import pytest
 
-sys.path.append(str(Path(__file__).resolve().parents[1]))
-
-from core.exceptions import (
+from simulateur_trafic.core.analyseur import Analyseur
+from simulateur_trafic.core.exceptions import (
     ConfigurationFileNotFoundError,
     DivisionByZeroAnalysisError,
     InvalidSimulationParameterError,
@@ -15,11 +11,10 @@ from core.exceptions import (
     RouteNotFoundError,
     VehicleAlreadyPresentError,
 )
-from core.analyseur import Analyseur
-from core.simulateur import Simulateur
-from models.reseau import ReseauRoutier
-from models.route import Route
-from models.vehicule import Vehicule
+from simulateur_trafic.core.simulateur import Simulateur
+from simulateur_trafic.models.reseau import ReseauRoutier
+from simulateur_trafic.models.route import Route
+from simulateur_trafic.models.vehicule import Vehicule
 
 
 @pytest.fixture

@@ -3,17 +3,13 @@
 from __future__ import annotations
 
 import os
-import sys
 import tempfile
 import traceback
 from dataclasses import dataclass
-from pathlib import Path
 from typing import Callable, Type
 
-sys.path.append(str(Path(__file__).resolve().parents[1]))
-
-from core.analyseur import Analyseur
-from core.exceptions import (
+from simulateur_trafic.core.analyseur import Analyseur
+from simulateur_trafic.core.exceptions import (
     ConfigurationFileNotFoundError,
     ConfigurationFormatError,
     DivisionByZeroAnalysisError,
@@ -24,10 +20,10 @@ from core.exceptions import (
     RouteNotFoundError,
     VehicleAlreadyPresentError,
 )
-from core.simulateur import Simulateur
-from models.reseau import ReseauRoutier
-from models.route import Route
-from models.vehicule import Vehicule
+from simulateur_trafic.core.simulateur import Simulateur
+from simulateur_trafic.models.reseau import ReseauRoutier
+from simulateur_trafic.models.route import Route
+from simulateur_trafic.models.vehicule import Vehicule
 
 
 @dataclass(frozen=True)

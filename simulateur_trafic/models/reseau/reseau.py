@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-from core.exceptions import RouteNotFoundError, VehicleError
-from models.route import Route
+from ...core.exceptions import RouteNotFoundError, VehicleError
+from ..route import Route
 
 
 class ReseauRoutier:

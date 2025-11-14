@@ -1,29 +1,5 @@
-import sys
-from pathlib import Path
-
-# Prioritiser les modules du dépôt sur ceux installés
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from importlib.machinery import SourceFileLoader
-
-# Charger directement les implémentations locales pour éviter
-# les collisions avec un package installé nommé "models".
-_route_mod = SourceFileLoader(
-    "_route",
-    str(Path(__file__).resolve().parents[1] / "models/route/route.py"),
-).load_module()
-_feu_mod = SourceFileLoader(
-    "_feu_rouge",
-    str(Path(__file__).resolve().parents[1] / "models/route/feu_rouge.py"),
-).load_module()
-_veh_mod = SourceFileLoader(
-    "_vehicule",
-    str(Path(__file__).resolve().parents[1] / "models/vehicule/vehicule.py"),
-).load_module()
-
-Route = _route_mod.Route
-FeuRouge = _feu_mod.FeuRouge
-Vehicule = _veh_mod.Vehicule
+from simulateur_trafic.models.route import FeuRouge, Route
+from simulateur_trafic.models.vehicule import Vehicule
 
 
 def test_arret_au_feu_rouge():

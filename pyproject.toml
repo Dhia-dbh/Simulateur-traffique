@@ -1,9 +1,7 @@
 [tool.poetry]
 name = "simulateur-trafic"
 packages = [
-   { include = "core" },
-   { include = "models" },
-   { include = "interface" },
+   { include = "simulateur_trafic" },
 ]
 version = "0.1.0"
 description = "Similateur de Traffic de Voitures"
@@ -11,6 +9,9 @@ authors = ["Dhia Ben Hamouda"]
 readme = "README.md"
 license = "MIT"
 keywords = ["traffic", "simulation"]
+include = [
+    "simulateur_trafic/data/*.json",
+]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.14"
