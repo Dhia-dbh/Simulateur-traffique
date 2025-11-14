@@ -43,8 +43,8 @@ jobs:
             python3-dev \
             libffi-dev
 
-      - name: Install project only (no deps)
-        run: poetry install --no-interaction --no-ansi --only-root
+      - name: Install project + test deps
+        run: poetry install --no-interaction --no-ansi --only-root --with test
 
       - name: Run tests
         run: poetry run pytest --cov=. --cov-report=term-missing
