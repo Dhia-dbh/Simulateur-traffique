@@ -20,14 +20,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install pipx and Poetry
-        shell: bash
+      - name: Install pipx
         run: |
           python -m pip install --upgrade pip
           python -m pip install --user pipx
           python -m pipx ensurepath
-          ~/.local/bin/pipx install poetry
           echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install Poetry
+        run: |
+          pipx install poetry
           poetry --version
 
       - name: Install dependencies
@@ -52,14 +54,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install pipx and Poetry
-        shell: bash
+      - name: Install pipx
         run: |
           python -m pip install --upgrade pip
           python -m pip install --user pipx
           python -m pipx ensurepath
-          ~/.local/bin/pipx install poetry
           echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install Poetry
+        run: |
+          pipx install poetry
           poetry --version
 
       - name: Install dependencies
