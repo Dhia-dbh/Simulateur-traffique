@@ -35,7 +35,9 @@ class ReseauRoutier:
             raise RouteNotFoundError(
                 "Impossible d'ajouter un véhicule sur une route inexistante dans le réseau."
             )
-        route.ajouter_vehicule(vehicule)
+        # Si le véhicule est déjà sur la route, ne pas le ré-ajouter
+        if vehicule not in getattr(route, "vehicules_presents", []):
+            route.ajouter_vehicule(vehicule)
         self.vehicules.append(vehicule)
 
     def mettre_a_jour_reseau(self) -> None:

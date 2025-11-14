@@ -10,6 +10,7 @@ from core.exceptions import (
     ConfigurationFileNotFoundError,
     ConfigurationFormatError,
     InvalidSimulationParameterError,
+    RouteNotFoundError,
 )
 from models.reseau import ReseauRoutier
 from models.route import Route
@@ -100,7 +101,7 @@ class Simulateur:
                     if troncon.nom == route_nom
                 )
             except StopIteration as exc:
-                raise ConfigurationFormatError(
+                raise RouteNotFoundError(
                     f"Route {route_nom} introuvable pour le véhicule {identifiant}."
                 ) from exc
             vehicule.changer_de_route(route)

@@ -1,0 +1,22 @@
+name: CI - Simulateur Routier
+on:
+   push:
+      branches: [ main ]
+   pull_request:
+      branches: [ main ]
+jobs:
+tests:
+   runs-on: windows-latest
+   steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+   with:
+      python-version: '3.11'
+   - name: Install Poetry
+   # TODO : installer Poetry sur Windows
+   run: |
+   pass
+   - name: Install dependencies
+   run: poetry install
+   - name: Run tests
+   run: poetry run pytest --cov=simulateur_routier --cov-report=term-missing
