@@ -28,19 +28,19 @@ jobs:
           sudo apt-get install -y \
             build-essential \
             pkg-config \
-            python3-dev \
-            libcairo2-dev \
-            libgirepository1.0-dev \
-            libglib2.0-dev \
-            gobject-introspection
+            python3-dev 
+            # libcairo2-dev \
+            # libgirepository1.0-dev \
+            # libglib2.0-dev \
+            # gobject-introspection
 
       # sanity-check that pkg-config can see girepository once we fix PKG_CONFIG_PATH
-      - name: Check pkg-config for girepository
-        run: |
-          # Extend PKG_CONFIG_PATH instead of replacing it
-          export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig:${PKG_CONFIG_PATH:-}
-          echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}"
-          pkg-config --modversion girepository-2.0
+      # - name: Check pkg-config for girepository
+      #   run: |
+      #     # Extend PKG_CONFIG_PATH instead of replacing it
+      #     export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig:${PKG_CONFIG_PATH:-}
+      #     echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}"
+      #     pkg-config --modversion girepository-2.0
 
       - name: Install Poetry and Twine
         run: |
