@@ -61,13 +61,13 @@ jobs:
         run: |
           poetry build -f wheel
 
-      - name: Publish to TestPyPI
-        if: github.ref == 'refs/heads/test-deploy'
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
-        run: |
-          twine upload --repository-url https://test.pypi.org/legacy/ dist/*.whl
+      # - name: Publish to TestPyPI
+      #   if: github.ref == 'refs/heads/test-deploy'
+      #   env:
+      #     TWINE_USERNAME: __token__
+      #     TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+      #   run: |
+      #     twine upload --repository-url https://test.pypi.org/legacy/ dist/*.whl
 
       - name: Publish to PyPI
         if: github.ref == 'refs/heads/main'
