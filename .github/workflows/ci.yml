@@ -32,13 +32,15 @@ jobs:
             libcairo2-dev \
             libgirepository1.0-dev \
             libglib2.0-dev \
-            gir1.2-glib-2.0 \
             gobject-introspection
 
-      - name: Check girepository pkg-config
+      # sanity-check that pkg-config can see girepository once we fix PKG_CONFIG_PATH
+      - name: Check pkg-config for girepository
         run: |
+          # Extend PKG_CONFIG_PATH instead of replacing it
+          export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig:${PKG_CONFIG_PATH:-}
+          echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}"
           pkg-config --modversion girepository-2.0
-          pkg-config --cflags --libs girepository-2.0
 
       - name: Install Poetry and Twine
         run: |
@@ -47,6 +49,8 @@ jobs:
 
       - name: Install dependencies with Poetry
         run: |
+          # Make sure builds use the same PKG_CONFIG_PATH fix
+          export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig:${PKG_CONFIG_PATH:-}
           poetry install --no-interaction
 
       - name: Run tests
