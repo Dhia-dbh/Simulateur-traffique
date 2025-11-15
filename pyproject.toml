@@ -3,7 +3,7 @@ name = "simulateur-trafic"
 packages = [
    { include = "simulateur_trafic" },
 ]
-version = "0.1.0"
+version = "0.2.1"
 description = "Similateur de Traffic de Voitures"
 authors = ["Dhia Ben Hamouda"]
 readme = "README.md"
